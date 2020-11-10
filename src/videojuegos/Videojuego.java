@@ -6,7 +6,6 @@
 package videojuegos;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -15,17 +14,17 @@ import java.util.Date;
 public class Videojuego {
 
     private String nombre;
-    private Genero genero; //agregacion
-    private ArrayList<Entrega> numeroDeEntregas; //compocision
+    private ArrayList<Genero> genero = null; //agregacion
+    private int numeroDeEntregas; //compocision
     private int numeroDeVentas;
-    private Date fechaDeCreacion;
+    private String fechaDeCreacion;
     private int popularidad;
     private Clasificacion clasificacion; //agregacion
 
-    public Videojuego(String nombre, Genero genero, int numeroDeVentas, Date fechaDeCreacion, int popularidad, Clasificacion clasificacion) {
+    public Videojuego(String nombre, String genero, int numeroDeEntregas, int numeroDeVentas, String fechaDeCreacion, int popularidad, Clasificacion clasificacion) {
         this.nombre = nombre;
-        this.genero = genero;
-        this.numeroDeEntregas = new ArrayList<Entrega>();
+        this.genero = new ArrayList<>();
+        this.numeroDeEntregas = numeroDeEntregas;
         this.numeroDeVentas = numeroDeVentas;
         this.fechaDeCreacion = fechaDeCreacion;
         this.popularidad = popularidad;
@@ -47,10 +46,6 @@ public class Videojuego {
      *
      * @param nuevaEntrega
      */
-    public void actualizarEntregas(Entrega nuevaEntrega) {
-        this.numeroDeEntregas.add(nuevaEntrega);
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -59,16 +54,16 @@ public class Videojuego {
         this.nombre = nombre;
     }
 
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
+    public int getGenero() {
+        return genero.size();
     }
 
     public int getNumeroDeEntregas() {
-        return numeroDeEntregas.size();
+        return numeroDeEntregas;
+    }
+
+    public void setNumeroDeEntregas(int nuevaEntrega) {
+        this.numeroDeEntregas = nuevaEntrega;
     }
 
     public int getNumeroDeVentas() {
@@ -79,20 +74,16 @@ public class Videojuego {
         this.numeroDeVentas = numeroDeVentas;
     }
 
-    public Date getFechaDeCreacion() {
+    public String getFechaDeCreacion() {
         return fechaDeCreacion;
     }
 
-    public void setFechaDeCreacion(Date fechaDeCreacion) {
+    public void setFechaDeCreacion(String fechaDeCreacion) {
         this.fechaDeCreacion = fechaDeCreacion;
     }
 
-    public Clasificacion getClasificacion() {
-        return clasificacion;
-    }
-
-    public void setClasificacion(Clasificacion clasificacion) {
-        this.clasificacion = clasificacion;
+    public String getClasificacion() {
+        return clasificacion.toString();
     }
 
     public int getPopularidad() {
@@ -101,5 +92,13 @@ public class Videojuego {
 
     public void setPopularidad(int popularidad) {
         this.popularidad = popularidad;
+    }
+
+    public void setGenero(ArrayList genero) {
+        this.genero = genero;
+    }
+
+    public void setClasificacion(Clasificacion clasificacion) {
+        this.clasificacion = clasificacion;
     }
 }
